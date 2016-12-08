@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace CrossGeofenceSample
 {
     public partial class App : Application
     {
+        public static ObservableCollection<Models.Event> Events = Helpers.Settings.GetEvents();
         public App()
         {
             InitializeComponent();
