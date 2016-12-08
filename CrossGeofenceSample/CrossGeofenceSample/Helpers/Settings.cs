@@ -83,7 +83,7 @@ namespace CrossGeofenceSample.Helpers
             }
         }
 
-        public static void SaveResult(Event e)
+        public static void SaveResult(Models.Event e)
         {
             AppSettings.AddOrUpdateValue(GetFieldKey(e.Id.ToString(), EventIdKey), e.Id);
             AppSettings.AddOrUpdateValue(GetFieldKey(e.Id.ToString(), EventDescriptionKey), e.Description);
@@ -95,7 +95,7 @@ namespace CrossGeofenceSample.Helpers
             AppSettings.AddOrUpdateValue(EventIdsKey, string.Join(IdSeparator, eventIds.ToArray()));
 
         }
-        public static void RemoveEvent(Event e)
+        public static void RemoveEvent(Models.Event e)
         {
             AppSettings.Remove(GetFieldKey(e.Id.ToString(), EventIdKey));
             AppSettings.Remove(GetFieldKey(e.Id.ToString(), EventDescriptionKey));
@@ -115,10 +115,10 @@ namespace CrossGeofenceSample.Helpers
 
             AppSettings.Remove(EventIdsKey);
         }
-        public static ObservableCollection<Event> GetEvents()
+        public static ObservableCollection<Models.Event> GetEvents()
         {
 
-            ObservableCollection<Event> events = new ObservableCollection<Event>();
+            ObservableCollection<Models.Event> events = new ObservableCollection<Models.Event>();
 
             if (!string.IsNullOrEmpty(AppSettings.GetValueOrDefault(EventIdsKey, string.Empty)))
             {
@@ -132,7 +132,7 @@ namespace CrossGeofenceSample.Helpers
                     int id = AppSettings.GetValueOrDefault(GetFieldKey(k, EventIdKey), 0);
                     string date = AppSettings.GetValueOrDefault(GetFieldKey(k, EventDateKey), string.Empty);
                     string description = AppSettings.GetValueOrDefault(GetFieldKey(k, EventDescriptionKey), string.Empty);
-                    events.Add(new Event()
+                    events.Add(new Models.Event()
                     {
                         Id = id,
                         Description = description,
@@ -141,7 +141,7 @@ namespace CrossGeofenceSample.Helpers
                 }
 
             }
-            return new ObservableCollection<Event>(events.OrderBy(p => p.Id));
+            return new ObservableCollection<Models.Event>(events.OrderBy(p => p.Id));
 
         }
         static string GetFieldKey(string id, string fieldName)
