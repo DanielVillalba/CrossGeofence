@@ -38,6 +38,19 @@ namespace CrossGeofenceSample.ViewModels
 
         public bool IsBusy { get; set; }
 
+        public ICommand EditCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsEditing = true;
+                    Debug.WriteLine(Latitude);
+                    Debug.WriteLine(Longitude);
+                });
+            }
+        }
+
         public ICommand CancelCommand
         {
             get
@@ -48,7 +61,19 @@ namespace CrossGeofenceSample.ViewModels
                 });
             }
         }
+
         public ICommand AddCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await AddGeofence();
+                });
+            }
+        }
+
+        public ICommand ClearCommand
         {
             get
             {
@@ -70,7 +95,7 @@ namespace CrossGeofenceSample.ViewModels
 
         public bool IsEditing { get; set; }
         public bool IsNotEditing { get { return !IsEditing && IsNotBusy; } }
-        public bool IsNotBusy { get; set; }
+        public bool IsNotBusy { get { return !IsBusy; }  }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
