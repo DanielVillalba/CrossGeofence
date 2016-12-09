@@ -218,6 +218,14 @@
     <Content Include="FodyWeavers.xml" />
     <Content Include="GeofenceAppStarter.txt" />
     <Content Include="Helpers\GeofenceService.txt" />
+    <AndroidResource Include="Resources\drawable\cancel.png" />
+    <AndroidResource Include="Resources\drawable\geofence.png" />
+    <AndroidResource Include="Resources\drawable\map.png" />
+    <AndroidResource Include="Resources\drawable\marker.png" />
+    <AndroidResource Include="Resources\drawable\ok.png" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable\region.png" />
+    <AndroidResource Include="Resources\drawable\trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
