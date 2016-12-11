@@ -126,8 +126,23 @@ namespace CrossGeofenceSample.ViewModels
                     Data.Add(place);
                     CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion(place.Name, place.Latitude, place.Longitude, place.Radius)
                     {
+                        //NotifyOnStay = true,
+                        //StayedInThresholdDuration = TimeSpan.FromMinutes(5),
+
+                        // test to make it work
                         NotifyOnStay = true,
-                        StayedInThresholdDuration = TimeSpan.FromMinutes(5)
+                        NotifyOnEntry = true,
+                        NotifyOnExit = true,
+                        ShowNotification = true,
+                        ShowEntryNotification = true,
+                        ShowExitNotification = true,
+                        ShowStayNotification = true,
+                        NotificationStayMessage = "stay message!",
+                        NotificationEntryMessage = "entering geofence!",
+                        NotificationExitMessage = "exiting geofence!",
+                        StayedInThresholdDuration = TimeSpan.FromSeconds(60),
+                        
+
                     });
 
                     MessagingCenter.Send<MapViewModel, Models.Place>(this, "AddPin", place);
