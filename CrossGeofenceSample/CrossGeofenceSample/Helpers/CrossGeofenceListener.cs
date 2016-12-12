@@ -43,6 +43,13 @@ namespace CrossGeofenceSample.Helpers
         {
             Debug.WriteLine("OnAppStarted fired");
             Debug.WriteLine(string.Format("{0} - {1}", CrossGeofence.Id, "App started"));
+
+            Models.Event eventToSave = new Models.Event
+            {
+                Date = DateTime.Now.ToString(),
+                Description = "Starting geofence app",
+            };
+            Settings.SaveResult(eventToSave);
         }
 
         public void OnLocationChanged(GeofenceLocation location)
